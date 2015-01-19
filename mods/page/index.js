@@ -2,9 +2,8 @@ define(function(require, exports, module){
 	var View = require("view");
 
 	var listController = View.extend({
-		init: function(parent){
-			console.log(parent);
-			this._super(parent);
+		init: function(){
+			this._super();
 
 			this.$el.html("index<div id='xx'>xxxxxx</div>");
 			this.$el.css("border","1px solid #000");

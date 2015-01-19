@@ -35,7 +35,7 @@ define(function(require, exports, module) {
 				var href = $(e.target).attr("href");
 				if(href){
 					e.preventDefault();
-					self.forWard(href);
+					self.forward(href);
 					self.viewChange(href);
 				}
 			});
@@ -72,7 +72,8 @@ define(function(require, exports, module) {
 				this.currentView = this.views[view];
 			} else{
 				try{
-					this.currentView = require(view).newInstance([this]);
+					this.currentView = require(view).newInstance();
+					this.currentView.parent = this;
 					this.root.append( this.currentView.$el );
 					this.views[view] = this.currentView;
 					this.viewList.push(this.currentView);
@@ -82,7 +83,7 @@ define(function(require, exports, module) {
 			}
 			this.currentView.fire("show");
 		},
-		forWard: function( page ){
+		forward: function( page ){
 			var currentState = history.state;
 			history.pushState(currentState, "", page);
 		}
