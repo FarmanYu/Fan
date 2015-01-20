@@ -10,26 +10,38 @@ define(function(require, exports, module) {
 	var Events = require("events");
 	var SideBar = require("sideBar");
 
+	var classData = {
+		"javascript":["Date","Json","String","Number"],
+		"node":["fs","http","net"]
+	};
+
 	var App = Events.extend({
 		init: function( routes, defaultView ) {
 			this._super();
 			
-			this.root = $("#contentView");
+			this.root = $("._app");
+			this.viewsContainer = this.root.find("._container");
+			this.sideBarContainer = this.root.find("._sidebar");
+
 			this.views = {};
 			this.viewList = [];
 			this.currentView = Events.newInstance();
-			this.sideBarView = SideBar.newInstance([this, {
-				"javascript":["Date","Json","String","Number"],
-				"node":["fs","http","net"]
-			}]);
-			this.root.append( this.sideBarView.$el );
+			this.sideBarView = SideBar.newInstance([this, classData]);
+			this.sideBarContainer.append( this.sideBarView.$el );
 
 			this.parser = Parser.newInstance([location, routes, defaultView]);
 			this.updateView();
-			this.obServer();
+
+			var self = this;
+			this.on("start", function(){
+				self.obServer();
+			});
+			this.on("appEventListaner", function(){
+				self.registerEvent();
+			});
 		},
 		obServer: function(){
-			this.registerEvent();
+			this.fire("appEventListaner");
 			var self = this;
 			this.root.delegate("a","click", function(e){
 				var href = $(e.target).attr("href");
@@ -48,7 +60,6 @@ define(function(require, exports, module) {
 			this.on("OpenPage", function(data){
 				self.currentView.fire("OpenPage",data);
 			});
-
 			this.on("ClassChange", function(newClass){
 				self.sideBarView.fire("ClassChange", newClass);
 			});
@@ -74,7 +85,7 @@ define(function(require, exports, module) {
 				try{
 					this.currentView = require(view).newInstance();
 					this.currentView.parent = this;
-					this.root.append( this.currentView.$el );
+					this.viewsContainer.append( this.currentView.$el );
 					this.views[view] = this.currentView;
 					this.viewList.push(this.currentView);
 				}catch(e){

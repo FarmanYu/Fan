@@ -7,6 +7,7 @@ var clean = require('gulp-clean');
 
 var paths = {
     libs: [
+        "src/libs/underscore.js",
         "src/libs/zepto.js",
         "src/libs/sea-debug.js",
         "src/libs/class.js"
@@ -32,38 +33,38 @@ var output = {
     mainmin: "farman.min.js"
 };
 
-gulp.task('clean', [], function(cb){
+gulp.task('js-clean', [], function(cb){
 	return gulp.src(output.dir, {read: false})
     .pipe(clean());
 });
 
-gulp.task('jshint',['clean'], function() {
+gulp.task('jshint',['js-clean'], function() {
   return gulp.src(paths.seajs)
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('libs-dev',['clean'], function() {
+gulp.task('js-libs-dev',['js-clean'], function() {
   return gulp.src(paths.libs)
     .pipe(concat(output.libs))
     .pipe(gulp.dest(output.dir));
 });
 
-gulp.task('sea-dev',['libs-dev'], function() {
+gulp.task('js-sea-dev',['libs-dev'], function() {
   return gulp.src(paths.seajs)
     .pipe(transport())
     .pipe(concat(output.seajs))
     .pipe(gulp.dest(output.dir));
 });
 
-gulp.task('page-dev', ['clean'], function() {
+gulp.task('js-page-dev', ['js-clean'], function() {
   return gulp.src(paths.page)
     .pipe(transport())
     .pipe(concat(output.pagejs))
     .pipe(gulp.dest(output.dir));
 });
 
-gulp.task('dev',['sea-dev','page-dev'], function() {
+gulp.task('js-dev',['js-sea-dev','js-page-dev'], function() {
   var src = [
     [output.dir, output.libs].join("/"),
     [output.dir, output.seajs].join("/")
@@ -73,7 +74,7 @@ gulp.task('dev',['sea-dev','page-dev'], function() {
     .pipe(gulp.dest(output.dir));
 });
 
-gulp.task('online',['dev'], function() {
+gulp.task('js-online',['js-dev'], function() {
   var src = [
     [output.dir, output.main].join("/"),
   ];

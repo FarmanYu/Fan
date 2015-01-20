@@ -15,7 +15,7 @@ define(function(require, exports, module) {
 			var self = this;
 			this.dirs = [];
 			this.parent = parent;
-			this.$el = $("<div class='viewport-sidebar'></div>");
+			this.$el = $("<div class='_list'></div>");
 			this.render(data);
 			this.on("show", function(){
 				self.$el.show();
@@ -28,15 +28,10 @@ define(function(require, exports, module) {
 			this.on("OpenClass", function(src){
 				self.onOpenClass(src);
 			});
-			// this.on("CloseClass", function(src){
-			// 	self.onCloseClass(src);
-			// });
+
 			this.on("OpenPage", function(page){
 				self.onOpenPage(page);
 			});
-			// this.on("ClosePage", function(page){
-			// 	self.onClosePage(page);
-			// });
 
 			this.on("ClassChange", function(data){
 				alert(data);
@@ -57,14 +52,12 @@ define(function(require, exports, module) {
 			console.log("hide");
 		},
 		onOpenClass: function(src){
-			//console.log(src);
 			this.parent.fire("OpenClass", src);
 		},
 		onCloseClass: function(src){
 			console.log(src);
 		},
 		onOpenPage: function(page){
-			//console.log(page);
 			this.parent.fire("OpenPage", page);
 		},
 		onClosePage: function(page){

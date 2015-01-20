@@ -13,12 +13,13 @@ define(function(require, exports, module) {
 
 			var self = this;
 			
-			this.$el = $("<div class='viewport'></div>");
+			this.$el = $("<div class='_content'></div>");
 			this.on("show", function(){
 				self.$el.show();
 				self.onShow();
 			});
 			this.on("hide", function(){
+				self.hideLoading();
 				self.$el.hide();
 				self.onHide();
 			});
@@ -41,6 +42,12 @@ define(function(require, exports, module) {
 		},
 		onHide: function(){
 			console.log("hide");
+		},
+		showLoading: function(){
+			this.$el.addClass("_content-loading");
+		},
+		hideLoading: function(){
+			this.$el.removeClass("_content-loading");
 		}
 	});
 	module.exports = View;

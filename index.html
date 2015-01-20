@@ -2,23 +2,23 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>single page application</title>
+	<title>application</title>
+  	<link rel="stylesheet" href="public/css/application.css">
 </head>
 <body>
-	<a href="/index">index</a>
-	<a href="/list/js">list</a>
-	<a href="/tagged/js">taged</a>
-	<a href="/q/ss">search</a>
-	<a href="/golbal_objects/ss">golbal_objects</a>
-	<div id="contentView">
-		
+	<div class="_app">
+		<section class="_sidebar"></section>
+		<section class="_container"></section>
 	</div>
 	<script type="text/javascript" src="./dest/farman.libs.js"></script>
 	<script type="text/javascript" src="./dest/farman.sea-mods.js"></script>
 	<script type="text/javascript" src="./dest/farman.page.js"></script>
 	<script type="text/javascript">
 		seajs.use(["app","routes"], function(App, routes){
-			this.Farman = App.newInstance([routes], "index");
+			var appInstance = App.newInstance([routes], "index");
+
+			appInstance.fire("start");
+			this.Farman = appInstance;
 		});
 	</script>
 </body>

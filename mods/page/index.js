@@ -5,8 +5,8 @@ define(function(require, exports, module){
 		init: function(){
 			this._super();
 
-			this.$el.html("index<div id='xx'>xxxxxx</div>");
-			this.$el.css("border","1px solid #000");
+			// this.$el.html("index<div id='xx'>xxxxxx</div>");
+			// this.$el.css("border","1px solid #000");
 
 			var self = this;
 			this.on("OpenPage", function(page){
@@ -21,7 +21,7 @@ define(function(require, exports, module){
 			"click #xx":"showMe"
 		},
 		showMe: function(){
-			this.parent.fire("ClassChange", 222);
+			//this.parent.fire("ClassChange", 222);
 		},
 		onShow: function(){
 			this._super();
