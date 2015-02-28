@@ -1,0 +1,207 @@
+{
+    "res": {
+        "mods/common/pageModels.js": {
+            "uri": "/mods/common/pageModels.js",
+            "type": "js",
+            "deps": [
+                "model"
+            ],
+            "pkg": "p2"
+        },
+        "mods/common/pageStores.js": {
+            "uri": "/mods/common/pageStores.js",
+            "type": "js",
+            "deps": [
+                "storage"
+            ],
+            "pkg": "p2"
+        },
+        "mods/page/golbal_objects.js": {
+            "uri": "/mods/page/golbal_objects.js",
+            "type": "js",
+            "deps": [
+                "view"
+            ],
+            "pkg": "p2"
+        },
+        "mods/page/index.js": {
+            "uri": "/mods/page/index.js",
+            "type": "js",
+            "deps": [
+                "view"
+            ],
+            "pkg": "p2"
+        },
+        "mods/page/list.js": {
+            "uri": "/mods/page/list.js",
+            "type": "js",
+            "deps": [
+                "view"
+            ],
+            "pkg": "p2"
+        },
+        "mods/page/search.js": {
+            "uri": "/mods/page/search.js",
+            "type": "js",
+            "deps": [
+                "view"
+            ],
+            "pkg": "p2"
+        },
+        "mods/page/tagged.js": {
+            "uri": "/mods/page/tagged.js",
+            "type": "js",
+            "deps": [
+                "view"
+            ],
+            "pkg": "p2"
+        },
+        "mods/routes.js": {
+            "uri": "/mods/routes.js",
+            "type": "js",
+            "pkg": "p2"
+        },
+        "src/app.js": {
+            "uri": "/src/app.js",
+            "type": "js",
+            "deps": [
+                "parser",
+                "events",
+                "sideBar"
+            ],
+            "pkg": "p1"
+        },
+        "src/common/ajax.js": {
+            "uri": "/src/common/ajax.js",
+            "type": "js",
+            "pkg": "p1"
+        },
+        "src/common/model.js": {
+            "uri": "/src/common/model.js",
+            "type": "js",
+            "deps": [
+                "ajax"
+            ],
+            "pkg": "p1"
+        },
+        "src/common/storage.js": {
+            "uri": "/src/common/storage.js",
+            "type": "js",
+            "pkg": "p1"
+        },
+        "src/core/events.js": {
+            "uri": "/src/core/events.js",
+            "type": "js",
+            "pkg": "p1"
+        },
+        "src/core/parser.js": {
+            "uri": "/src/core/parser.js",
+            "type": "js",
+            "pkg": "p1"
+        },
+        "src/libs/class.js": {
+            "uri": "/src/libs/class.js",
+            "type": "js",
+            "pkg": "p0"
+        },
+        "src/libs/sea-debug.js": {
+            "uri": "/src/libs/sea-debug.js",
+            "type": "js",
+            "pkg": "p0"
+        },
+        "src/libs/sea-text.js": {
+            "uri": "/src/libs/sea-text.js",
+            "type": "js",
+            "pkg": "p0"
+        },
+        "src/libs/underscore.js": {
+            "uri": "/src/libs/underscore.js",
+            "type": "js",
+            "pkg": "p0"
+        },
+        "src/libs/zepto.js": {
+            "uri": "/src/libs/zepto.js",
+            "type": "js",
+            "pkg": "p0"
+        },
+        "src/page/dir.js": {
+            "uri": "/src/page/dir.js",
+            "type": "js",
+            "deps": [
+                "events"
+            ],
+            "pkg": "p1"
+        },
+        "src/page/sideBar.js": {
+            "uri": "/src/page/sideBar.js",
+            "type": "js",
+            "deps": [
+                "events",
+                "dir"
+            ],
+            "pkg": "p1"
+        },
+        "src/page/view.js": {
+            "uri": "/src/page/view.js",
+            "type": "js",
+            "deps": [
+                "events"
+            ],
+            "pkg": "p1"
+        }
+    },
+    "pkg": {
+        "p0": {
+            "uri": "/pkg/farman.libs.js",
+            "type": "js",
+            "has": [
+                "src/libs/class.js",
+                "src/libs/sea-debug.js",
+                "src/libs/sea-text.js",
+                "src/libs/underscore.js",
+                "src/libs/zepto.js"
+            ]
+        },
+        "p1": {
+            "uri": "/pkg/farman.seajs.js",
+            "type": "js",
+            "has": [
+                "src/common/ajax.js",
+                "src/common/model.js",
+                "src/common/storage.js",
+                "src/core/events.js",
+                "src/core/parser.js",
+                "src/page/dir.js",
+                "src/page/sideBar.js",
+                "src/page/view.js",
+                "src/app.js"
+            ],
+            "deps": [
+                "ajax",
+                "events",
+                "dir",
+                "parser",
+                "sideBar"
+            ]
+        },
+        "p2": {
+            "uri": "/pkg/farman.page.js",
+            "type": "js",
+            "has": [
+                "mods/routes.js",
+                "mods/common/pageModels.js",
+                "mods/common/pageStores.js",
+                "mods/page/golbal_objects.js",
+                "mods/page/index.js",
+                "mods/page/list.js",
+                "mods/page/search.js",
+                "mods/page/tagged.js"
+            ],
+            "deps": [
+                "model",
+                "storage",
+                "view"
+            ]
+        }
+    }
+}
