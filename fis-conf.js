@@ -4,12 +4,6 @@ fis.config.merge({
         md5Length : 0,
         include: ["src/**","mods/**"]
     },
-    modules : {
-        //压缩
-        optimizer:{
-            js:"uglify-js"
-        }
-    },
     settings:{
         //fis-optimizer-uglify-js插件的配置数据
         optimizer:{
