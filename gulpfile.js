@@ -4,6 +4,7 @@ var concat = require('gulp-concat');
 var transport = require("gulp-seajs-transport");
 var uglify = require('gulp-uglify');
 var clean = require('gulp-clean');
+var serve = require('gulp-serve');
 
 var paths = {
     libs: [
@@ -50,7 +51,7 @@ gulp.task('js-libs-dev',['js-clean'], function() {
     .pipe(gulp.dest(output.dir));
 });
 
-gulp.task('js-sea-dev',['libs-dev'], function() {
+gulp.task('js-sea-dev',['js-libs-dev'], function() {
   return gulp.src(paths.seajs)
     .pipe(transport())
     .pipe(concat(output.seajs))
@@ -84,4 +85,6 @@ gulp.task('js-online',['js-dev'], function() {
     .pipe(gulp.dest(output.dir));
 });
 
-gulp.task("default", ["jshint","online"]);
+gulp.task('serve', serve('.'));
+
+gulp.task("default", ["jshint","js-online"]);

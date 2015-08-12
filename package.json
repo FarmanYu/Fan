@@ -24,6 +24,8 @@
     "gulp-uglify": "^1.0.2"
   },
   "devDependencies": {
-    "gulp-seajs-transport": "0.0.6"
+    "gulp-seajs-transport": "0.0.6",
+    "gulp-serve": "^1.0.0",
+    "gulp-watch": "^4.3.4"
   }
 }
